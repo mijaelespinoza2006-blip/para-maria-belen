@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para ti ❤️</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: linear-gradient(135deg, #fff5f7, #fce4ec);
+      color: #4a3037;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    .heart {
+      position: fixed;
+      color: rgba(214, 80, 110, 0.18);
+      font-size: 28px;
+      animation: float 7s linear infinite;
+      pointer-events: none;
+    }
+
+    .heart:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .heart:nth-child(2) {
+      left: 30%;
+      animation-delay: 2s;
+      font-size: 20px;
+    }
+
+    .heart:nth-child(3) {
+      left: 65%;
+      animation-delay: 1s;
+      font-size: 35px;
+    }
+
+    .heart:nth-child(4) {
+      left: 85%;
+      animation-delay: 3s;
+      font-size: 22px;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(110vh) rotate(0deg);
+      }
+
+      to {
+        transform: translateY(-15vh) rotate(25deg);
+      }
+    }
+
+    .card {
+      width: min(90%, 620px);
+      padding: 42px 34px;
+      text-align: center;
+      background: rgba(255,255,255,0.88);
+      border-radius: 24px;
+      box-shadow: 0 15px 45px rgba(110, 55, 70, 0.15);
+      position: relative;
+      z-index: 2;
+    }
+
+    .small {
+      font-size: 15px;
+      letter-spacing: 2px;
+      color: #b35b72;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      margin: 0 0 24px;
+      font-size: clamp(34px, 8vw, 52px);
+      font-weight: normal;
+      color: #8e4057;
+    }
+
+    .message {
+      font-size: 18px;
+      line-height: 1.8;
+      margin: 0 auto 28px;
+      max-width: 500px;
+    }
+
+    button {
+      border: none;
+      background: #b95770;
+      color: white;
+      padding: 13px 25px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    button:hover {
+      transform: scale(1.04);
+      background: #a94861;
+    }
+
+    .hidden-message {
+      display: none;
+      margin-top: 25px;
+      font-size: 19px;
+      line-height: 1.8;
+      animation: appear 0.8s ease;
+    }
+
+    .hidden-message.show {
+      display: block;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .final {
+      margin-top: 25px;
+      font-size: 25px;
+      color: #a54861;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="heart">♥</div>
+  <div class="heart">♥</div>
+  <div class="heart">♥</div>
+  <div class="heart">♥</div>
+
+  <!-- Música de fondo -->
+  <audio id="musica" loop>
+    <source src="123.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <main class="card">
+
+    <div class="small">PARA MARÍA BELÉN ❤️</div>
+
+    <h1>María Belén, hay algo que quería decirte...</h1>
+
+    <p class="message">
+      No siempre encuentro las palabras correctas para decir todo lo que siento,
+      pero quería dejarte este pequeño lugar para que lo supieras.
+    </p>
+
+    <button onclick="mostrarMensaje()">
+      Abrir ❤️
+    </button>
+
+    <div id="mensaje" class="hidden-message">
+
+      Quiero que sepas que te quiero muchísimo.
+      Eres una persona muy especial para mí y aunque a veces no sepa
+      cómo demostrarlo o expresarlo, lo que siento por ti es muy sincero.
+
+      <br><br>
+
+      Gracias por cada momento, por cada conversación y por haber llegado a mi vida.
+
+      <div class="final">
+        Te quiero mucho. ❤️
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    function mostrarMensaje() {
+
+      const mensaje = document.getElementById("mensaje");
+      const musica = document.getElementById("musica");
+
+      // Mostrar / ocultar el mensaje
+      mensaje.classList.toggle("show");
+
+      // Volumen bajo, como música de fondo
+      musica.volume = 0.18;
+
+      // Reproducir música al presionar "Abrir"
+      musica.play().catch(error => {
+        console.log("No se pudo reproducir la música:", error);
+      });
+    }
+  </script>
+
+</body>
+</html>
